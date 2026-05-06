@@ -99,6 +99,6 @@ app.get('*', (req, res) => {
 // ─── Start ────────────────────────────────────────────────────────────────────
 initDB().then(() => {
   app.listen(PORT, () => {
-    console.log(`🚀 FixRight server running on port ${PORT}`);
+    console.log(`🚀 UrbanWs server running on port ${PORT}`);
   });
 });
