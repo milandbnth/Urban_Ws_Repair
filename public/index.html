@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Urban WS Repair — Professional Appliance Repair</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0f2235;
+      --navy-mid: #1a3550;
+      --accent: #e07b39;
+      --accent-light: #f5a06b;
+      --light-bg: #f7f5f2;
+      --white: #ffffff;
+      --text: #1a1a1a;
+      --muted: #5a6370;
+      --border: rgba(0,0,0,0.1);
+      --radius: 10px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); }
+
+    /* NAV */
+    nav {
+      background: var(--navy);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--white); letter-spacing: -0.3px; text-decoration: none; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { color: rgba(255,255,255,0.75); font-size: 14px; font-weight: 400; text-decoration: none; transition: color .2s; }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--accent);
+      color: var(--white);
+      border: none;
+      padding: 9px 20px;
+      border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background .2s;
+      text-decoration: none;
+    }
+    .nav-cta:hover { background: var(--accent-light); }
+
+    /* HERO */
+    .hero {
+      background: var(--navy);
+      padding: 72px 5% 60px;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(224,123,57,0.15);
+      color: var(--accent-light);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: 100px;
+      border: 1px solid rgba(224,123,57,0.25);
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .hero-badge-dot { width: 6px; height: 6px; background: var(--accent-light); border-radius: 50%; display: inline-block; }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 46px;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 18px;
+      font-weight: 600;
+    }
+    .hero h1 em { color: var(--accent); font-style: normal; }
+    .hero > div > p {
+      color: rgba(255,255,255,0.65);
+      font-size: 17px;
+      line-height: 1.65;
+      margin-bottom: 32px;
+      max-width: 480px;
+    }
+    .hero-stats { display: flex; gap: 32px; }
+    .stat-num { font-size: 28px; font-weight: 600; color: var(--white); }
+    .stat-label { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+
+    /* LEAD FORM */
+    .lead-form-card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 32px 28px;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.25);
+    }
+    .form-title { font-size: 18px; font-weight: 600; margin-bottom: 4px; color: var(--navy); }
+    .form-subtitle { font-size: 13px; color: var(--muted); margin-bottom: 22px; }
+    .form-row { margin-bottom: 14px; }
+    .form-row label { display: block; font-size: 12px; font-weight: 500; color: var(--muted); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.4px; }
+    .form-row input,
+    .form-row select,
+    .form-row textarea {
+      width: 100%;
+      padding: 10px 13px;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: var(--text);
+      background: #fafafa;
+      outline: none;
+      transition: border-color .2s, background .2s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .form-row input:focus,
+    .form-row select:focus,
+    .form-row textarea:focus {
+      border-color: var(--accent);
+      background: var(--white);
+    }
+    .form-row textarea { resize: vertical; min-height: 72px; }
+    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+    .submit-btn {
+      width: 100%;
+      background: var(--accent);
+      color: var(--white);
+      border: none;
+      padding: 13px;
+      border-radius: 7px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .2s, transform .1s;
+      margin-top: 4px;
+    }
+    .submit-btn:hover { background: #c96b2a; }
+    .submit-btn:active { transform: scale(0.99); }
+    .form-guarantee { text-align: center; font-size: 11px; color: var(--muted); margin-top: 10px; }
+
+    /* SUCCESS STATE */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 32px 0;
+    }
+    .success-icon {
+      width: 56px;
+      height: 56px;
+      background: #e9f5ee;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .form-success h3 { font-size: 20px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+    .form-success p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+    /* TRUST BAR */
+    .trust-bar {
+      background: var(--light-bg);
+      padding: 20px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .trust-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); font-weight: 500; white-space: nowrap; }
+    .trust-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+
+    /* SECTIONS */
+    .section { padding: 72px 5%; }
+    .section-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); margin-bottom: 10px; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 600; color: var(--navy); margin-bottom: 12px; line-height: 1.2; }
+    .section-sub { font-size: 16px; color: var(--muted); max-width: 520px; line-height: 1.6; margin-bottom: 48px; }
+
+    /* SERVICES */
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .service-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.08); transform: translateY(-2px); }
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(224,123,57,0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .service-icon svg { width: 24px; height: 24px; stroke: var(--accent); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .service-card h3 { font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+    .service-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* WHY US */
+    .why-section { background: var(--navy); padding: 72px 5%; }
+    .why-section .section-title { color: var(--white); }
+    .why-section .section-sub { color: rgba(255,255,255,0.55); }
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; }
+    .why-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+    }
+    .why-num { font-size: 36px; font-weight: 600; color: var(--accent); margin-bottom: 8px; font-family: 'Playfair Display', serif; }
+    .why-card h4 { font-size: 15px; font-weight: 500; color: var(--white); margin-bottom: 6px; }
+    .why-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+    /* HOW IT WORKS */
+    .steps-wrapper { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .step { padding: 24px 28px; border-right: 1px solid var(--border); }
+    .step:last-child { border-right: none; }
+    .step-num { font-size: 40px; font-weight: 600; color: rgba(224,123,57,0.2); font-family: 'Playfair Display', serif; margin-bottom: 12px; line-height: 1; }
+    .step h3 { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+    .step p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* REVIEWS */
+    .reviews-bg { background: var(--light-bg); }
+    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    .review-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 22px;
+    }
+    .stars { color: #f5a623; font-size: 15px; margin-bottom: 12px; letter-spacing: 2px; }
+    .review-text { font-size: 14px; color: var(--text); line-height: 1.65; margin-bottom: 16px; font-style: italic; }
+    .reviewer { display: flex; align-items: center; gap: 10px; }
+    .reviewer-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 600; color: var(--white); flex-shrink: 0;
+    }
+    .reviewer-name { font-size: 13px; font-weight: 600; color: var(--navy); }
+    .reviewer-loc { font-size: 11px; color: var(--muted); }
+
+    /* CTA STRIP */
+    .cta-strip { background: var(--accent); padding: 64px 5%; text-align: center; }
+    .cta-strip h2 { font-family: 'Playfair Display', serif; font-size: 32px; color: var(--white); margin-bottom: 10px; }
+    .cta-strip p { font-size: 16px; color: rgba(255,255,255,0.85); margin-bottom: 28px; }
+    .cta-btn {
+      display: inline-block;
+      background: var(--navy);
+      color: var(--white);
+      padding: 14px 36px;
+      border-radius: 7px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+      transition: background .2s;
+      text-decoration: none;
+    }
+    .cta-btn:hover { background: var(--navy-mid); }
+
+    /* FOOTER */
+    footer { background: #0a1c2e; padding: 56px 5% 28px; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.7; margin-top: 12px; }
+    .footer-col h4 { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.4); margin-bottom: 14px; }
+    .footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 8px; text-decoration: none; }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+    .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; padding: 48px 5% 40px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .steps-grid { grid-template-columns: 1fr 1fr; }
+      .step { border-right: none; border-bottom: 1px solid var(--border); }
+      .step:last-child { border-bottom: none; }
+    }
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 32px; }
+      .nav-links { display: none; }
+      .trust-bar { gap: 16px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 20px; flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a class="nav-logo" href="#">Urban<span>WS</span> Repair</a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#how">How It Works</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="nav-cta" href="#lead-form">Book a Repair</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Same-Day Service Available
+      </div>
+      <h1>Your Appliances,<br><em>Fixed Right</em> the<br>First Time.</h1>
+      <p>Professional appliance repair for kitchens, HVAC systems, laundry, and more. Certified technicians. Upfront pricing. Guaranteed work.</p>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">12K+</div>
+          <div class="stat-label">Repairs completed</div>
+        </div>
+        <div>
+          <div class="stat-num">4.9★</div>
+          <div class="stat-label">Customer rating</div>
+        </div>
+        <div>
+          <div class="stat-num">24*7</div>
+          <div class="stat-label">Emergency Service</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LEAD FORM -->
+    <div id="lead-form">
+      <div class="lead-form-card">
+        <div id="form-content">
+          <div class="form-title">Get a Free Quote</div>
+          <div class="form-subtitle">We'll call you within 60 minutes</div>
+
+          <div class="form-row-2">
+            <div class="form-row" style="margin-bottom:0">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" placeholder="Jane" />
+            </div>
+            <div class="form-row" style="margin-bottom:0">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" placeholder="Smith" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="+1 (555) 000-0000" />
+          </div>
+
+          <div class="form-row">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="you@example.com" />
+          </div>
+
+          <div class="form-row">
+            <label for="appliance">Appliance Type</label>
+            <select id="appliance">
+              <option value="">— Select appliance —</option>
+              <option>Refrigerator</option>
+              <option>Oven / Range / Stove</option>
+              <option>Dishwasher</option>
+              <option>Microwave</option>
+              <option>Washer</option>
+              <option>Dryer</option>
+              <option>AC / HVAC Unit</option>
+              <option>Furnace / Heater</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label for="pdate">Preferred Date</label>
+            <input type="date" id="pdate" />
+          </div>
+
+          <div class="form-row">
+            <label for="issue">Describe the Issue (optional)</label>
+            <textarea id="issue" placeholder="e.g. Fridge not cooling, strange noise from washer..."></textarea>
+          </div>
+
+          <button class="submit-btn" onclick="submitForm()">Request Free Quote</button>
+          <div class="form-guarantee">No obligation &nbsp;·&nbsp; No spam &nbsp;·&nbsp; 100% free</div>
+        </div>
+
+        <!-- SUCCESS -->
+        <div class="form-success" id="form-success">
+          <div class="success-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2d7a4f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+          <h3>Request Received!</h3>
+          <p>Thank you! A technician will call you<br>within the next <strong>60 minutes</strong> to confirm<br>your appointment.</p>
+          <div style="margin-top:20px;font-size:12px;color:var(--muted);">Reference # <strong id="ref-num"></strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item"><span class="trust-dot"></span> Licensed & Insured</div>
+    <div class="trust-item"><span class="trust-dot"></span> All Major Brands Serviced</div>
+    <div class="trust-item"><span class="trust-dot"></span> Upfront Flat-Rate Pricing</div>
+    <div class="trust-item"><span class="trust-dot"></span> Emergency Repairs Available 24/7</div>
+    <div class="trust-item"><span class="trust-dot"></span> Background-Checked Techs</div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="section-label">What We Fix</div>
+    <div class="section-title">Full-Service Appliance Repair</div>
+    <div class="section-sub">From everyday kitchen appliances to complex HVAC systems, our certified technicians handle it all — quickly and correctly.</div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="3" x2="9" y2="9"/></svg>
+        </div>
+        <h3>Refrigerators & Freezers</h3>
+        <p>Not cooling, ice maker failure, compressor issues, water leaks, and door seal problems.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/></svg>
+        </div>
+        <h3>Ovens & Ranges</h3>
+        <p>Burner failures, temperature calibration, igniter replacement, self-clean issues, and control board repair.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 6h18M3 6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2M3 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/><circle cx="12" cy="13" r="2"/></svg>
+        </div>
+        <h3>Dishwashers</h3>
+        <p>Not draining, poor cleaning results, leaks, door latch, pump motor, and detergent dispenser repairs.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>
+        </div>
+        <h3>Washers & Dryers</h3>
+        <p>Won't spin, not draining, drum issues, heating element, noisy operation, and error code diagnostics.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M2 12h20M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10"/><path d="M12 2v10l6 3"/></svg>
+        </div>
+        <h3>AC & HVAC Systems</h3>
+        <p>Not cooling/heating, refrigerant recharge, thermostat, compressor, coil cleaning, and duct inspection.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h3>Small Appliances</h3>
+        <p>Microwaves, garbage disposals, range hoods, wine coolers, ice makers, and more.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why-section">
+    <div class="section-label" style="color:var(--accent-light);">Why FixRight</div>
+    <div class="section-title">Repair Done the Right Way</div>
+    <div class="section-sub">We set the bar high so you never have to worry about shoddy work or surprise bills.</div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-num">60</div>
+        <h4>Minute Callback</h4>
+        <p>Submit a request and a real technician calls you back within one hour to discuss your issue.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">24*7</div>
+        <h4>Emergency services across the United States</h4>
+        <p>We provide coverage across the entire USA, with an additional service fee for suburbs.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">$295</div>
+        <h4>Diagnostic with Repair</h4>
+        <p>Flat Fee for diagnosis. Service fees may be higher for suburban and remote locations.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">50+</div>
+        <h4>Brands Serviced</h4>
+        <p>Samsung, LG, GE, Whirlpool, Bosch, Maytag, KitchenAid, and many more.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" id="how" style="background:var(--light-bg);">
+    <div class="section-label">Simple Process</div>
+    <div class="section-title">Three Steps to a Fixed Appliance</div>
+    <div class="section-sub" style="margin-bottom:36px;">No surprises, no delays. We keep the process clear and fast.</div>
+    <div class="steps-wrapper">
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h3>Request a Quote</h3>
+          <p>Fill out the form above or call us. Describe your appliance issue and pick a time that works for you.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h3>Technician Arrives</h3>
+          <p>A certified tech shows up on time with the right tools and common parts stocked in their van.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h3>Diagnosis & Pricing</h3>
+          <p>We inspect the issue and provide you with an upfront flat-rate quote for the repair.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <h3>Repair</h3>
+          <p>After your approval, we schedule and carry out the repair work as discussed, ensuring everything is completed according to the agreed estimate and standards.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section reviews-bg" id="reviews">
+    <div class="section-label">Customer Reviews</div>
+    <div class="section-title">Trusted by Homeowners</div>
+    <div class="section-sub">Don't take our word for it — here's what our customers have to say.</div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <div class="review-text">"Called at 8am and the technician was at my door by noon. My refrigerator was making a terrible noise — he diagnosed and fixed it in under an hour. Incredibly professional."</div>
+        <div class="reviewer">
+          <div class="reviewer-avatar">ML</div>
+          <div>
+            <div class="reviewer-name">Marcus L.</div>
+            <div class="reviewer-loc">Verified customer</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <div class="review-text">"Our AC went out during a heat wave. UrbanWs came same day, found the issue immediately, and had us cool again before dinner. Reasonable price, no hidden fees."</div>
+        <div class="reviewer">
+          <div class="reviewer-avatar">ST</div>
+          <div>
+            <div class="reviewer-name">Sandra T.</div>
+            <div class="reviewer-loc">Verified customer</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <div class="review-text">"My dryer stopped heating and I thought I'd need a new one. The tech replaced the heating element and it's been running great for 6 months. Saved me hundreds of dollars!"</div>
+        <div class="reviewer">
+          <div class="reviewer-avatar">RK</div>
+          <div>
+            <div class="reviewer-name">Rachel K.</div>
+            <div class="reviewer-loc">Verified customer</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <section class="cta-strip" id="contact">
+    <h2>Ready to Get Your Appliance Fixed?</h2>
+    <p>Book online or call us — we respond within 60 minutes, guaranteed.</p>
+    <a class="cta-btn" href="#lead-form">Get a Free Quote Now</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="nav-logo" href="#">Urban<span>WS</span> Repair</a>
+        <p>We offer professional appliance repair services for both residential and commercial customers, delivering reliable solutions to keep your appliances running efficiently with expert care and attention to detail.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#services">Refrigerator Repair</a>
+        <a href="#services">Washer & Dryer Repair</a>
+        <a href="#services">HVAC & AC Repair</a>
+        <a href="#services">Oven & Range Repair</a>
+        <a href="#services">Dishwasher Repair</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About Us</a>
+        <a href="#">Careers</a>
+        <a href="#">Blog</a>
+        <a href="#">Warranty Policy</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:+15551234567">(646) 535-3649</a>
+        
+        <a href="#">Mon–Sat, 7am–7pm</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Urban WS Repair. All rights reserved.</p>
+      <p><a href="#" style="color:rgba(255,255,255,0.3);text-decoration:none;">Privacy Policy</a> &nbsp;·&nbsp; <a href="#" style="color:rgba(255,255,255,0.3);text-decoration:none;">Terms of Service</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // ✅ Replace this URL with your actual Render backend URL after deploying
+    const API_URL = window.location.hostname === 'localhost'
+      ? 'http://localhost:3000'
+      : 'https://YOUR-RENDER-APP-NAME.onrender.com';
+
+    async function submitForm() {
+      const fname     = document.getElementById('fname').value.trim();
+      const lname     = document.getElementById('lname').value.trim();
+      const phone     = document.getElementById('phone').value.trim();
+      const email     = document.getElementById('email').value.trim();
+      const appliance = document.getElementById('appliance').value;
+      const pdate     = document.getElementById('pdate').value;
+      const issue     = document.getElementById('issue').value.trim();
+
+      if (!fname)                         { alert('Please enter your first name.'); return; }
+      if (!phone)                         { alert('Please enter your phone number.'); return; }
+      if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
+      if (!appliance)                     { alert('Please select the appliance type.'); return; }
+
+      const btn = document.querySelector('.submit-btn');
+      btn.textContent = 'Submitting…';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch(`${API_URL}/api/leads`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ fname, lname, phone, email, appliance, pdate, issue })
+        });
+
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Submission failed');
+
+        document.getElementById('form-content').style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+        document.getElementById('ref-num').textContent = data.ref;
+
+      } catch (err) {
+        alert('Something went wrong: ' + err.message);
+        btn.textContent = 'Request Free Quote';
+        btn.disabled = false;
+      }
+    }
+  </script>
+</body>
+</html>
